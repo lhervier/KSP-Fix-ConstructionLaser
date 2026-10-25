@@ -1,0 +1,4 @@
+obj/
+GameData/KSPFixConstructionLaser/*.dll
+GameData/*.zip
+__pycache__/
