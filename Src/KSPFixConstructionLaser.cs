@@ -1,4 +1,5 @@
 using System;
+using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 
@@ -16,7 +17,9 @@ namespace com.github.lhervier.ksp.fix.constructionlaser
         private void Start()
         {
             Settings.Load();
-            Log.Info($"Version {typeof(KSPFixConstructionLaser).Assembly.GetName().Version}, " +
+            string version = typeof(KSPFixConstructionLaser).Assembly
+                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion;
+            Log.Info($"Version {version}, " +
                 $"traitsComparedByName {Settings.TraitsComparedByName}, log level {Log.Level}");
             if (!Settings.TraitsComparedByName)
             {
